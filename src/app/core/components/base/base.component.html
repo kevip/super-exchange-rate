@@ -1,0 +1,25 @@
+<div class="base">
+  <header class="nav-header">
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSideNav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Super Exchange Rate</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+  </header>
+  <div class="side-nav">
+    <mat-sidenav-container class="side-nav__container" >
+      <mat-sidenav mode="side" [opened]="sideNavOpened">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let link of links; track link " [activated]="link.isActive">
+            <a matListItemTitle href="...">{{ link.itemTitle}}</a>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="side-nav__content">
+        <ng-content></ng-content>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

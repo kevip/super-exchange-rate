@@ -1,0 +1,17 @@
+$header-height: 64px;
+.example-spacer {
+  flex: 1 1 auto;
+}
+.base {
+  .nav-header {
+    height: $header-height;
+  }
+  .side-nav{
+    &__container {
+      height: calc(100vh - $header-height);
+    }
+    &__content {
+      padding: 15px 24px;
+    }
+  }
+}
