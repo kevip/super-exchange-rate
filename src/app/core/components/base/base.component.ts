@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TNavLink } from 'src/app/shared/types/nav.links.type';
+import { ERoutes } from '../../config/routes';
 
 @Component({
   selector: 'app-base',
@@ -8,11 +9,11 @@ import { TNavLink } from 'src/app/shared/types/nav.links.type';
 })
 export class BaseComponent {
 
-  sideNavOpened = false;
+  sideNavOpened = true;
 
   links: TNavLink[] = [
-    { isActive: true, itemTitle: 'Inicio'},
-    { isActive: false, itemTitle: 'Tipo de cambio'},
+    { isActive: true, itemTitle: 'Inicio', path: ERoutes.HOME},
+    { isActive: false, itemTitle: 'Tipo de cambio', path: ERoutes.EXCHANGE_RATE},
   ]
 
   toggleSideNav():void {

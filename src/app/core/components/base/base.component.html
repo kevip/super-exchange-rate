@@ -12,9 +12,11 @@
     <mat-sidenav-container class="side-nav__container" >
       <mat-sidenav mode="side" [opened]="sideNavOpened">
         <mat-nav-list>
-          <mat-list-item *ngFor="let link of links; track link " [activated]="link.isActive">
-            <a matListItemTitle href="...">{{ link.itemTitle}}</a>
-          </mat-list-item>
+          <a matListItemTitle *ngFor="let link of links" [routerLink]="[link.path]">
+            <mat-list-item  [activated]="link.isActive">
+              {{ link.itemTitle}}
+            </mat-list-item>
+          </a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content class="side-nav__content">

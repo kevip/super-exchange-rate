@@ -1,0 +1,29 @@
+export enum ECurrency {
+  USD = 'USD', // Estados Unidos
+  PEN = 'PEN', // Perú
+  CLP = 'CLP', // Chile
+  COP = 'COP', // Colombia
+  BRL = 'BRL', // Brasil
+  ARS = 'ARS', // Argentina
+  MXN = 'MXN', // México
+  CAD = 'CAD', // Canadá
+  UYU = 'UYU', // Uruguay
+  VES = 'VES', // Venezuela
+  GTQ = 'GTQ', // Guatemala
+  HNL = 'HNL', // Honduras
+  NIO = 'NIO', // Nicaragua
+  DOP = 'DOP', // República Dominicana
+  PAB = 'PAB', // Panamá (junto al USD)
+  BSD = 'BSD', // Bahamas
+  BBD = 'BBD', // Barbados
+  BZD = 'BZD', // Belice
+  XCD = 'XCD', // Estados del Caribe Oriental (Anguila, Antigua y Barbuda, Dominica, Granada, Montserrat, San Cristóbal y Nieves, Santa Lucía, San Vicente y las Granadinas)
+  HTG = 'HTG', // Haití
+  JMD = 'JMD', // Jamaica
+  EUR = 'EUR', // Zona Euro (19 de los 27 países de la UE, incluyendo Alemania, Francia, España, Italia, entre otros)
+  GBP = 'GBP', // Reino Unido
+  CHF = 'CHF', // Suiza
+  SEK = 'SEK', // Suecia
+  NOK = 'NOK', // Noruega
+  DKK = 'DKK'  // Dinamarca
+}

@@ -1,0 +1,13 @@
+.exchange-rate-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__field {
+    width: 100%;
+  }
+  &__field-container {
+    width: 100%;
+    max-width: 250px;
+  }
+}

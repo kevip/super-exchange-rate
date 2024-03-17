@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <form class="exchange-rate-form" [formGroup]="form">
+        <section class="exchange-rate-form__field-container">
+          <mat-form-field class="exchange-rate-form__field">
+            <mat-label>Tengo ({{currencyName[currencyFrom]}})</mat-label>
+            <input matInput type="text" formControlName="currencyFrom" (blur)="getExchangeRate('from')">
+          </mat-form-field>
+        </section>
+        <section class="exchange-rate-form__field-container">
+          <mat-form-field class="exchange-rate-form__field">
+            <mat-label>Quiero ({{currencyName[currencyTo]}})</mat-label>
+            <input matInput type="text" formControlName="currencyTo" (blur)="getExchangeRate('to')">
+          </mat-form-field>
+        </section>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <mat-card>
+    <app-exchange-rate-list *ngIf="(exchangeRate$ | async) as latestER" [rates]="latestER"></app-exchange-rate-list>
+  </mat-card>
+
+</div>
