@@ -1,0 +1,7 @@
+<ng-container *ngIf="(list$ | async) as rates">
+
+  <app-exchange-rate-list
+    [rates]="rates"
+    [showOptions]="{ edit: true, remove: true}">
+  </app-exchange-rate-list>
+</ng-container>

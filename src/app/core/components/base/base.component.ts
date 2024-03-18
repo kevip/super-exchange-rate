@@ -14,6 +14,7 @@ export class BaseComponent {
   links: TNavLink[] = [
     { isActive: true, itemTitle: 'Inicio', path: ERoutes.HOME},
     { isActive: false, itemTitle: 'Tipo de cambio', path: ERoutes.EXCHANGE_RATE},
+    { isActive: false, itemTitle: 'Frecuentes', path: ERoutes.FREQUENT_RATE},
   ]
 
   toggleSideNav():void {

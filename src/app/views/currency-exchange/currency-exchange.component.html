@@ -19,7 +19,8 @@
   </mat-card>
   <br>
   <mat-card>
-    <app-exchange-rate-list *ngIf="(exchangeRate$ | async) as latestER" [rates]="latestER"></app-exchange-rate-list>
+    <app-exchange-rate-list *ngIf="(exchangeRate$ | async) as latestER" [rates]="latestER.rates" [showOptions]="{ add: true}">
+    </app-exchange-rate-list>
   </mat-card>
 
 </div>

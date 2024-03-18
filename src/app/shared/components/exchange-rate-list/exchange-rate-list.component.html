@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="rates.rates" class="exchange-rate-list">
+<table mat-table [dataSource]="rates" class="exchange-rate-list">
   <ng-container matColumnDef="currency">
     <th mat-header-cell *matHeaderCellDef> Moneda </th>
     <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
@@ -8,14 +8,22 @@
     <th mat-header-cell *matHeaderCellDef> Rate </th>
     <td mat-cell *matCellDef="let element"> {{element.value}} </td>
   </ng-container>
-  <ng-container matColumnDef="options">
+  <ng-container matColumnDef="options" *ngIf="showOptions">
     <th mat-header-cell *matHeaderCellDef> Opciones </th>
     <td mat-cell *matCellDef="let element">
-      <mat-icon class="pointer"
+      <mat-icon *ngIf="showOptions.add"
+        class="icon-pointer"
         aria-hidden="false"
         aria-label="Agregar como favorito"
-        fontIcon="star"
+        fontIcon="star_border"
         (click)="addFrequent(element)">
+      </mat-icon>
+      <mat-icon *ngIf="showOptions.remove"
+        class="icon-pointer"
+        aria-hidden="true"
+        aria-label="Remover"
+        fontIcon="delete"
+        (click)="removeFrequent(element)">
       </mat-icon>
     </td>
   </ng-container>

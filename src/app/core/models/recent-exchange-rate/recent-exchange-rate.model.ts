@@ -1,9 +1,11 @@
 import { ECurrency } from "../../config/currency";
 import { IRates, IRecentExchangeRateResponse } from "./recent-exchange-rate.response.interface";
+import { nanoid } from 'nanoid';
 
 export type TRecentExchangeRate = {
   currency: string;
   value: number;
+  uuid: string;
 }
 export class RecentExchangeRateModel {
   base: string;
@@ -23,7 +25,7 @@ export class RecentExchangeRateModel {
   private converRatesToArray(rates: IRates): TRecentExchangeRate[] {
 
     return Object.entries(rates)
-      .map(([currency, value]) => ({ currency, value }))
+      .map(([currency, value]) => ({ currency, value, uuid: nanoid() }))
       .filter(rate => {
 
         return Object.keys(ECurrency).includes(rate.currency);

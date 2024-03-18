@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./views/currency-exchange/currency-exchange.module').then(m => m.CurrencyExchangeModule),
   },
   {
+    path: 'frequent-exchange-rate',
+    loadChildren: () => import('./views/frequent-exchange-rate/frequent-exchange-rate.module').then(m => m.FrequentExchangeRateModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   }

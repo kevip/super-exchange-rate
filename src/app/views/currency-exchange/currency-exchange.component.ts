@@ -5,7 +5,7 @@ import { ECurrency } from 'src/app/core/config/currency';
 import { ECurrencyName } from 'src/app/core/config/currency-name';
 import { ECurrencySymbol } from 'src/app/core/config/currency-symbol';
 import { ExchangeRateHttp } from 'src/app/core/http/exchange-rate.http';
-import { RecentExchangeRateModel } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
+import { RecentExchangeRateModel, TRecentExchangeRate } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 
 @Component({
