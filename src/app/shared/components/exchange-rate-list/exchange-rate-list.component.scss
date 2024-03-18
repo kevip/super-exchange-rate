@@ -2,6 +2,18 @@
   max-height: 400px;
   height: 100%;
 }
-.icon-pointer {
+.options-icon {
+  // margin-right: 5px;
   cursor: pointer;
+  &--loading {
+    animation: rotate 2s linear infinite;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

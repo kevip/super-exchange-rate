@@ -5,7 +5,7 @@ import { ECurrency } from 'src/app/core/config/currency';
 import { ECurrencyName } from 'src/app/core/config/currency-name';
 import { ECurrencySymbol } from 'src/app/core/config/currency-symbol';
 import { ExchangeRateHttp } from 'src/app/core/http/exchange-rate.http';
-import { RecentExchangeRateModel, TRecentExchangeRate } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
+import { RecentExchangeRateModel } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 
 @Component({
@@ -17,11 +17,11 @@ export class CurrencyExchangeComponent implements OnInit {
   /**
    * Default source currency
    */
-  currencyFrom = ECurrency.USD;
+  currencyFrom = ECurrency.CLP;
   /**
    * Default target currency
    */
-  currencyTo = ECurrency.CLP;
+  currencyTo = ECurrency.USD;
 
   currencySymbol = ECurrencySymbol;
 

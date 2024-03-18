@@ -6,6 +6,7 @@ export type TRecentExchangeRate = {
   currency: string;
   value: number;
   uuid: string;
+  loading?: boolean;
 }
 export class RecentExchangeRateModel {
   base: string;

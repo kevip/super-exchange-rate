@@ -7,11 +7,13 @@ import { FrequentExchangeRateRoutingModule } from './frequent-exchange-rate-rout
 import { FrequentExchangeRateComponent } from './frequent-exchange-rate.component';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { ExchangeRateHttp } from 'src/app/core/http/exchange-rate.http';
-import { ExchangeRateListModule } from 'src/app/shared/components/exchange-rate-list.module';
+import { ExchangeRateListModule } from 'src/app/shared/components/exchange-rate-list/exchange-rate-list.module';
+import { EditFrequentComponent } from './edit-frequent/edit-frequent.component';
 
 @NgModule({
   declarations: [
     FrequentExchangeRateComponent,
+    EditFrequentComponent,
   ],
   imports: [
     CommonModule,

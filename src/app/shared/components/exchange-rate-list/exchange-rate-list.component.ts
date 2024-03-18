@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { TRecentExchangeRate } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { TListOptions } from '../../types/exchange-rate-list-options';
+import { finalize, of, switchMap, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-exchange-rate-list',
@@ -15,10 +16,12 @@ export class ExchangeRateListComponent implements OnInit {
 
   displayedColumns: string[] = ['currency', 'value'];
 
+  loadingUpdate!: boolean;
+
   constructor(private service: ExchangeRateService) { }
 
   ngOnInit(): void {
-    if(this.showOptions) {
+    if (this.showOptions) {
       this.displayedColumns.push('options');
     }
   }
@@ -26,8 +29,44 @@ export class ExchangeRateListComponent implements OnInit {
   addFrequent(exchangeRate: TRecentExchangeRate): void {
     this.service.addFrequent(exchangeRate);
   }
+
   removeFrequent(exchangeRate: TRecentExchangeRate): void {
-    console.log('removing...')
     this.service.removeFrequent(exchangeRate.uuid);
+  }
+
+  updateFrequent(exchangeRate: TRecentExchangeRate): void {
+    of(null).pipe(
+      tap(() => this.startLoading(exchangeRate)),
+      switchMap(() => this.service.updateFrequent(exchangeRate.uuid).pipe(
+      )),
+      take(1),
+      finalize(() => this.stopLoading(exchangeRate)),
+    ).subscribe({
+      next: (res) => {
+      }
+    });
+  }
+  private startLoading(exchangeRate: TRecentExchangeRate): void {
+    const rates = this.service.getFrequentExchangeRates();
+    this.service.saveFrequents([
+      ...rates.map(rate => {
+        if(rate.uuid === exchangeRate.uuid) {
+          rate.loading = true;
+        }
+        return rate;
+      }),
+    ]);
+  }
+
+  private stopLoading(exchangeRate: TRecentExchangeRate): void {
+    const rates = this.service.getFrequentExchangeRates();
+    this.service.saveFrequents([
+      ...rates.map(rate => {
+        if(rate.uuid === exchangeRate.uuid) {
+          rate.loading = false;
+        }
+        return rate;
+      })
+    ]);
   }
 }

@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { CdkColumnDef } from '@angular/cdk/table';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { MatIconModule } from '@angular/material/icon';
-import { ExchangeRateListModule } from 'src/app/shared/components/exchange-rate-list.module';
+import { ExchangeRateListModule } from 'src/app/shared/components/exchange-rate-list/exchange-rate-list.module';
 
 const MATERIAL_MODULES = [
   MatFormFieldModule,
