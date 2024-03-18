@@ -73,7 +73,7 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
     this.exchangeRate$ = interval(300000).pipe(
       startWith(0),
       map(() => ({ from: this.currencyFrom, to: this.currencyTo })),
-      switchMap(({ from, to }) => this.http.getRecentExchangeRate({ from, to: 'USD,PEN' })),
+      switchMap(({ from }) => this.http.getRecentExchangeRate({ from, to: 'USD,PEN' })),
       map(response => {
         const frequents = this.service.getFrequentExchangeRates();
         response.rates = response.rates.map(rate => {
