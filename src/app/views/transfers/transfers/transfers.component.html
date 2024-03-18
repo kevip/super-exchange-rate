@@ -1,0 +1,26 @@
+<!-- <ng-container *ngIf="transfers" class="exchange-rate-list"></ng-container> -->
+<h2>Operaciones historicas:</h2>
+<table mat-table [dataSource]="transfers" class="exchange-rate-list">
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef> Monto </th>
+    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sourceAccount">
+    <th mat-header-cell *matHeaderCellDef> Cuenta origen </th>
+    <td mat-cell *matCellDef="let element"> {{element.sourceAccount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="targetAccount">
+    <th mat-header-cell *matHeaderCellDef> Cuenta destino </th>
+    <td mat-cell *matCellDef="let element"> {{element.targetAccount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="exchangeRate">
+    <th mat-header-cell *matHeaderCellDef> Tipo de cambio</th>
+    <td mat-cell *matCellDef="let element"> {{element.exchangeRate.from}} -> {{element.exchangeRate.to}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

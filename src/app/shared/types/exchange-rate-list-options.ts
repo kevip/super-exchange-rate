@@ -3,4 +3,5 @@ export type TListOptions = {
   remove?: boolean;
   edit?: boolean;
   update?: boolean;
+  transfer?: boolean;
 }

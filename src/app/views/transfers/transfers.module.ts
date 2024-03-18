@@ -14,6 +14,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { ExchangeRateCardModule } from 'src/app/shared/components/exchange-rate-card/exchange-rate-card.module';
+import { TransfersComponent } from './transfers/transfers.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 const MATERIAL_MODULES = [
   MatFormFieldModule,
@@ -22,11 +25,14 @@ const MATERIAL_MODULES = [
   MatSelectModule,
   MatButtonModule,
   MatProgressSpinnerModule,
+  MatTableModule,
+  MatIconModule,
 ];
 
 @NgModule({
   declarations: [
     TransferComponent,
+    TransfersComponent,
   ],
   imports: [
     CommonModule,

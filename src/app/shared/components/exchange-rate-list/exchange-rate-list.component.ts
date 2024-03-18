@@ -32,6 +32,7 @@ export class ExchangeRateListComponent implements OnInit {
 
   addFrequent(exchangeRate: TRecentExchangeRate): void {
     this.service.addFrequent(exchangeRate);
+    window.location.reload();
   }
 
   removeFrequent(exchangeRate: TRecentExchangeRate): void {

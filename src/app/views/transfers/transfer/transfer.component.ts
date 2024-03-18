@@ -9,6 +9,7 @@ import { EmailControl } from './controls/email.control';
 import { Control } from './controls/control';
 import { TransferService } from 'src/app/core/services/transfer.service';
 import { ECurrencyName } from 'src/app/core/config/currency-name';
+import { ECurrency } from 'src/app/core/config/currency';
 
 @Component({
   selector: 'app-transfer',
@@ -63,7 +64,14 @@ export class TransferComponent implements OnInit {
     if (this.form.valid) {
       this.isLoading = true;
       setTimeout(() => {
-        const transfer = this.form.value;
+        const transfer = {
+          ...this.form.value,
+          exchangeRate: {
+            from: ECurrency.CLP,
+            to: this.frequent.currency,
+            rate: this.frequent.value,
+          }
+        };
         this.service.saveTransferOperation(transfer);
         this.isLoading = false;
       }, 2000);

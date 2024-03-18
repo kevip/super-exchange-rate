@@ -7,6 +7,7 @@ export type TRecentExchangeRate = {
   value: number;
   uuid: string;
   loading?: boolean;
+  isFrequent?: boolean;
 }
 export class RecentExchangeRateModel {
   base: string;
