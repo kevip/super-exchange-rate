@@ -19,6 +19,14 @@
         (click)="addFrequent(element)">
         <mat-icon>star_border</mat-icon>
       </button>
+      <button mat-mini-fab
+        color="primary"
+        aria-label="Agregar como favorito"
+        matTooltip="Transferir!"
+        class="options-icon"
+        (click)="transfer(element)">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
       <button mat-mini-fab *ngIf="showOptions.remove"
         color="primary"
         class="options-icon"

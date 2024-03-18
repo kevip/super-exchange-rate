@@ -78,7 +78,6 @@ export class ExchangeRateService {
   }
 
   setFrequents(rates: TRecentExchangeRate[]): void {
-    console.log(rates)
     this.frequentsExchangeRateSub.next(rates);
   }
 }

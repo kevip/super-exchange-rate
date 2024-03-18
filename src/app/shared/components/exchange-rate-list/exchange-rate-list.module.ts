@@ -10,6 +10,7 @@ import { CdkColumnDef } from "@angular/cdk/table";
 import { ExchangeRateService } from "src/app/core/services/exchange-rate.service";
 import { ExchangeRateHttp } from "src/app/core/http/exchange-rate.http";
 import { MatButtonModule } from "@angular/material/button";
+import { RouterModule } from "@angular/router";
 
 const MATERIAL_MODULES = [
   MatFormFieldModule,
@@ -29,6 +30,7 @@ const MATERIAL_MODULES = [
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ...MATERIAL_MODULES,
   ],
   providers: [

@@ -1,0 +1,16 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  &__submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}

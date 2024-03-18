@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./views/frequent-exchange-rate/frequent-exchange-rate.module').then(m => m.FrequentExchangeRateModule),
   },
   {
+    path: 'transfer',
+    loadChildren: () => import('./views/transfers/transfers.module').then(m => m.TransfersModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   }
