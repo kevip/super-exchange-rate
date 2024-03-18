@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TRecentExchangeRate } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { TListOptions } from '../../types/exchange-rate-list-options';

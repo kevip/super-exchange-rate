@@ -1,34 +1,35 @@
 <div class="container">
-  <h2>Conoce el tipo de cambio:</h2><br>
-  <form class="exchange-rate-form" [formGroup]="form">
-    <section class="exchange-rate-form__field-container">
-      <mat-card>
-        <mat-card-content>
-          <mat-form-field class="exchange-rate-form__field">
-            <mat-label>Tengo ({{currencyName[currencyFrom]}})</mat-label>
-            <input matInput type="text" formControlName="currencyFrom" (blur)="getExchangeRate('from')" maxlength="5">
-          </mat-form-field>
-        </mat-card-content>
-      </mat-card>
-    </section>
-    <div [ngClass]="{'exchange-rate-form__separator':true, 'exchange-rate-form__separator--loading': calculatingRate}">
-      <mat-icon>swap_vert</mat-icon>
-    </div>
-    <section class="exchange-rate-form__field-container">
-      <mat-card>
-        <mat-card-content>
-          <mat-form-field class="exchange-rate-form__field">
-            <mat-label>Quiero ({{currencyName[currencyTo]}})</mat-label>
-            <input matInput type="text" formControlName="currencyTo" (blur)="getExchangeRate('to')" maxlength="5">
-          </mat-form-field>
-        </mat-card-content>
-      </mat-card>
-    </section>
-  </form>
-  <br>
-  <mat-card>
-    <app-exchange-rate-list *ngIf="(exchangeRate$ | async) as latestER" [rates]="latestER.rates" [showOptions]="{ add: true}">
-    </app-exchange-rate-list>
-  </mat-card>
+  <h2>Conoce el tipo de cambio:</h2>
+  <div class="wrap">
+    <form class="exchange-rate-form" [formGroup]="form">
+      <section class="exchange-rate-form__field-container">
+        <mat-card>
+          <mat-card-content>
+            <mat-form-field class="exchange-rate-form__field">
+              <mat-label>Tengo ({{currencyName[currencyFrom]}})</mat-label>
+              <input matInput type="text" formControlName="currencyFrom" (input)="getExchangeRate('from')" maxlength="5">
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </section>
+      <div [ngClass]="{'exchange-rate-form__separator':true, 'exchange-rate-form__separator--loading': calculatingRate}">
+        <mat-icon>swap_vert</mat-icon>
+      </div>
+      <section class="exchange-rate-form__field-container">
+        <mat-card>
+          <mat-card-content>
+            <mat-form-field class="exchange-rate-form__field">
+              <mat-label>Quiero ({{currencyName[currencyTo]}})</mat-label>
+              <input matInput type="text" formControlName="currencyTo" (input)="getExchangeRate('to')" maxlength="5">
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </section>
+    </form>
+    <mat-card class="rates-container">
+      <app-exchange-rate-list *ngIf="(exchangeRate$ | async) as latestER" [rates]="latestER.rates" [showOptions]="{ add: true}">
+      </app-exchange-rate-list>
+    </mat-card>
+  </div>
 
 </div>

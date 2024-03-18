@@ -1,5 +1,5 @@
+<h2>Tipos de cambio favoritos:</h2>
 <ng-container *ngIf="(list$ | async) as rates">
-
   <app-exchange-rate-list
     [rates]="rates"
     [showOptions]="{ edit: true, remove: true, update: true, transfer: true }">

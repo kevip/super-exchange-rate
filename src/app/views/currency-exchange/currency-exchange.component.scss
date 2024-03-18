@@ -1,34 +1,57 @@
-.exchange-rate-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  &__field {
-    width: 100%;
+.container {
+  .exchange-rate-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: self-start;
+    &__field {
+      width: 100%;
+    }
+    &__field-container {
+      width: 100%;
+      max-width: 310px;
+    }
+    &__separator {
+      background: #fff;
+      border: 1.2px solid #a3a3a3;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      margin-top: -10px;
+      z-index: 10;
+      margin-bottom: -10px;
+      &--loading {
+        animation: rotate 2s linear infinite;
+      }
+    }
   }
-  &__field-container {
-    width: 100%;
-    max-width: 310px;
-  }
-  &__separator {
-    background: #fff;
-    border: 1.2px solid #a3a3a3;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+  .wrap {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 5px;
-    margin-top: -10px;
-    z-index: 10;
-    margin-bottom: -10px;
-    &--loading {
-      animation: rotate 2s linear infinite;
+    justify-content: space-evenly;
+  }
+}
+@media (max-width: 750px){
+  .container {
+    .wrap {
+      flex-direction: column;
+      justify-content: center;
+    }
+    .exchange-rate-form,
+    .rates-container {
+      width: 100%;
+    }
+    .exchange-rate-form {
+      align-self: center;
+      margin-bottom: 10px;
     }
   }
 }
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);

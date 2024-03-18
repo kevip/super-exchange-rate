@@ -13,7 +13,7 @@ export class BaseComponent {
 
   links: TNavLink[] = [
     { isActive: false, itemTitle: 'Tipo de cambio', path: ERoutes.EXCHANGE_RATE },
-    { isActive: false, itemTitle: 'Frecuentes', path: ERoutes.FREQUENT_RATE },
+    { isActive: false, itemTitle: 'Favoritos', path: ERoutes.FREQUENT_RATE },
     { isActive: false, itemTitle: 'Mis Operaciones', path: ERoutes.TRANSFERS },
   ]
 

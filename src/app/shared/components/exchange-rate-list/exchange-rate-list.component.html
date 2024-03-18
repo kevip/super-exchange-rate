@@ -14,6 +14,7 @@
       <button mat-mini-fab *ngIf="showOptions.add"
         color="primary"
         aria-label="Agregar como favorito"
+        matTooltip="Agregar favorito"
         class="options-icon"
         [disabled]="element.isFrequent"
         (click)="addFrequent(element)">
@@ -22,24 +23,26 @@
       <button mat-mini-fab *ngIf="showOptions.transfer"
         color="primary"
         aria-label="Agregar como favorito"
-        matTooltip="Transferir!"
+        matTooltip="Transferir"
         class="options-icon"
         (click)="transfer(element)">
         <mat-icon>swap_horiz</mat-icon>
       </button>
-      <button mat-mini-fab *ngIf="showOptions.remove"
-        color="primary"
-        class="options-icon"
-        (click)="removeFrequent(element)">
-        <mat-icon>delete</mat-icon>
-      </button>
       <button mat-mini-fab *ngIf="showOptions.update"
         color="primary"
         aria-label="Actualizar"
+        matTooltip="Actualizar tasa"
         [ngClass]="{'options-icon': true, 'options-icon--loading': element.loading}"
         [disabled]="element.loading"
         (click)="updateFrequent(element)">
         <mat-icon>update</mat-icon>
+      </button>
+      <button mat-mini-fab *ngIf="showOptions.remove"
+        color="primary"
+        class="options-icon"
+        matTooltip="Eliminar"
+        (click)="removeFrequent(element)">
+        <mat-icon>delete</mat-icon>
       </button>
     </td>
   </ng-container>
