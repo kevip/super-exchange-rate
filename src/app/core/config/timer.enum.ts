@@ -1,0 +1,4 @@
+export enum ETimer {
+  REFRESH_EXCHANGE_RATE = 300000,
+  DEBOUNCE_TIME = 300,
+}

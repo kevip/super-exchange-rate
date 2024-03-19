@@ -4,6 +4,8 @@ import { Observable, Subject, Subscription, debounceTime, filter, finalize, inte
 import { ECurrency } from 'src/app/core/config/currency';
 import { ECurrencyName } from 'src/app/core/config/currency-name';
 import { ECurrencySymbol } from 'src/app/core/config/currency-symbol';
+import { ESource } from 'src/app/core/config/source';
+import { ETimer } from 'src/app/core/config/timer.enum';
 import { ExchangeRateHttp } from 'src/app/core/http/exchange-rate.http';
 import { RecentExchangeRateModel } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
@@ -14,6 +16,8 @@ import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service
   styleUrls: ['./currency-exchange.component.scss'],
 })
 export class CurrencyExchangeComponent implements OnInit, OnDestroy {
+
+  private readonly DEFAULT_AMOUNT = 100;
   /**
    * Default source currency
    */
@@ -27,6 +31,8 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
 
   currencyName = ECurrencyName;
 
+  currentRate!: number;
+
   exchangeRate$!: Observable<RecentExchangeRateModel>;
 
   exchangeRatesub = new Subject<{ fromKey: string; toKey: string; amount: string }>();
@@ -36,7 +42,7 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
   calculatingRate = false;
 
   form = new FormGroup({
-    currencyFrom: new FormControl(),
+    currencyFrom: new FormControl(this.DEFAULT_AMOUNT),
     currencyTo: new FormControl(),
   });
 
@@ -48,6 +54,11 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeToRecentRates();
     this.subscribeToInputs();
+    this.exchangeRatesub.next({
+      fromKey: 'currencyFrom',
+      toKey: 'currencyTo',
+      amount: this.form.controls.currencyFrom.value as unknown as string,
+    });
   }
 
   ngOnDestroy(): void {
@@ -55,7 +66,7 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
   }
 
   getExchangeRate(source: string): void {
-    const isFrom = source === 'from';
+    const isFrom = source === ESource.FROM;
     const fromKey = isFrom ? 'currencyFrom' : 'currencyTo';
     const toKey = isFrom ? 'currencyTo' : 'currencyFrom';
     const amount = this.form.controls[fromKey].value;
@@ -63,14 +74,14 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
   }
   private subscribeToInputs(): void {
     this.subs.add(this.exchangeRatesub.pipe(
-      debounceTime(300),
+      debounceTime(ETimer.DEBOUNCE_TIME),
       tap(() => this.calculatingRate = true),
       switchMap(({ fromKey, toKey, amount }) => this.calculateAndSetRate(fromKey, toKey, amount)),
     ).subscribe());
   }
 
   private subscribeToRecentRates(): void {
-    this.exchangeRate$ = interval(300000).pipe(
+    this.exchangeRate$ = interval(ETimer.REFRESH_EXCHANGE_RATE).pipe(
       startWith(0),
       map(() => ({ from: this.currencyFrom, to: this.currencyTo })),
       switchMap(({ from }) => this.http.getRecentExchangeRate({ from, to: 'USD,PEN' })),
@@ -90,9 +101,10 @@ export class CurrencyExchangeComponent implements OnInit, OnDestroy {
   private calculateAndSetRate(fromKey: string, toKey: string, amount: string) {
     const fromCurrency = this[fromKey as keyof CurrencyExchangeComponent];
     const toCurrency = this[toKey as keyof CurrencyExchangeComponent];
-    console.log('epake');
+
     return this.service.calculateExchangeRate({ from: fromCurrency, to: toCurrency }, amount).pipe(
       filter(resp => resp.success),
+      tap(resp => this.currentRate = resp.info.rate),
       map(resp => resp.result),
       take(1),
       map(converted => this.form.get(toKey)?.setValue(converted)),

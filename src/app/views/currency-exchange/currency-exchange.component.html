@@ -25,6 +25,7 @@
           </mat-card-content>
         </mat-card>
       </section>
+      <div class="">Tipo de cambio: {{currentRate}}</div>
     </form>
     <mat-card class="rates-container">
       <app-exchange-rate-list *ngIf="(exchangeRate$ | async) as latestER" [rates]="latestER.rates" [showOptions]="{ add: true}">
