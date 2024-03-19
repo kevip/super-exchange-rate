@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { finalize, of, switchMap, take, tap } from 'rxjs';
+import { Router } from '@angular/router';
 import { TRecentExchangeRate } from 'src/app/core/models/recent-exchange-rate/recent-exchange-rate.model';
 import { ExchangeRateService } from 'src/app/core/services/exchange-rate.service';
 import { TListOptions } from '../../types/exchange-rate-list-options';
-import { finalize, of, switchMap, take, tap } from 'rxjs';
-import { Router } from '@angular/router';
 import { ERoutes } from 'src/app/core/config/routes';
+import { ESnackBarAction, ESnackBarMessage } from 'src/app/core/config/snack-bar';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
   selector: 'app-exchange-rate-list',
@@ -22,7 +24,9 @@ export class ExchangeRateListComponent implements OnInit {
 
   constructor(
     private service: ExchangeRateService,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: SnackBarService,
+  ) { }
 
   ngOnInit(): void {
     if (this.showOptions) {
@@ -32,7 +36,8 @@ export class ExchangeRateListComponent implements OnInit {
 
   addFrequent(exchangeRate: TRecentExchangeRate): void {
     this.service.addFrequent(exchangeRate);
-    window.location.reload();
+    exchangeRate.isFrequent = true;
+    this.snackBar.openSnackBar(ESnackBarMessage.ADD_FAVORITE, ESnackBarAction.ADD_FAVORITE);
   }
 
   removeFrequent(exchangeRate: TRecentExchangeRate): void {

@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthTokenInterceptor } from './core/interceptors/auth-token.interceptor';
+import { SnackBarService } from './core/services/snack-bar.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { AuthTokenInterceptor } from './core/interceptors/auth-token.interceptor
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
+    SnackBarService,
+    MatSnackBar,
   ],
   bootstrap: [AppComponent]
 })
