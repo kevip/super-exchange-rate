@@ -8,7 +8,7 @@ Super Exchange Rate es una aplicación web responsive diseñada para permitir a 
 - Angular material
 - RxJS
 - ESLint
-
+- **API de Tipo de Cambio**: Utilizamos la API de RapidAPI para obtener información actualizada de los tipos de cambio. La documentación de la API puede encontrarse [aquí](https://rapidapi.com/principalapis/api/currency-conversion-and-exchange-rates/).
 
 ## Instalación
 Para ejecutar este proyecto en tu máquina local, necesitarás Node.js con la versión 16.20.0 o superiores y Angular CLI.
