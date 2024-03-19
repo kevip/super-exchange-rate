@@ -17,25 +17,17 @@ export class ExchangeRateHttp {
 
   getRecentExchangeRate(request: IRecentExchangeRateRequest): Observable<RecentExchangeRateModel> {
     const endpoint = `${environment.API_URL}/${EEndpoints.LATEST}?from=${request.from}&to=${request.to}`;
-    const httpOptions = {
-      headers: { 'X-RapidAPI-Key': '86cc087e83msh0c1d7482c3ac79ep1d36efjsn233b02e04e2e' },
 
-    };
-
-    return this.http.get<IRecentExchangeRateResponse>(endpoint, httpOptions)
+    return this.http.get<IRecentExchangeRateResponse>(endpoint)
       .pipe(map(response => new RecentExchangeRateModel(response)));
   }
 
   calculateExchangeRate(request: IConvertRequest): Observable<ConvertModel> {
     const endpoint = `${environment.API_URL}/${EEndpoints.CONVERT}?from=${request.from}&to=${request.to}&amount=${request.amount}`;
-    const httpOptions = {
-      headers: { 'X-RapidAPI-Key': '86cc087e83msh0c1d7482c3ac79ep1d36efjsn233b02e04e2e' },
-
-    };
-
-    return this.http.get<IConvertResponse>(endpoint, httpOptions)
+    return this.http.get<IConvertResponse>(endpoint)
       .pipe(map(response => new ConvertModel(response)));
   }
+
   getHistorical(): Observable<unknown> {
     const endpoint = `${environment.API_URL}/${EEndpoints.HISTORICAL_EXCHANGE_RATE}`;
 

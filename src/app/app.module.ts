@@ -13,6 +13,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthTokenInterceptor } from './core/interceptors/auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
