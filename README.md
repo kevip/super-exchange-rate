@@ -1,27 +1,51 @@
-# SuperExchangeRate
+# Super Exchange Rate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+## Descripción
+Super Exchange Rate es una aplicación web responsive diseñada para permitir a los usuarios consultar tipos de cambio, agregar cambios favoritos y realizar transferencias utilizando un tipo de cambio favorito. Construido con Angular v16, ofrece una experiencia de usuario fluida y funcionalidades ricas para la gestión de divisas.
 
-## Development server
+## Tecnologías
+- Angular v16
+- Angular material
+- RxJS
+- ESLint
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Instalación
+Para ejecutar este proyecto en tu máquina local, necesitarás Node.js con la versión 16.20.0 o superiores y Angular CLI.
+Una vez instalados, sigue estos pasos:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+git clone https://github.com/kevip/super-exchange-rate.git
+cd super-exchange-rate
+npm install
+ng serve
+```
 
-## Build
+## Lineamientos técnicos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Pruebas unitarias
+Las pruebas unitarias están escritas en Jasmine Y siguen el patrón AAA(Arrange, Act, Assert).
 
-## Running unit tests
+Cada test es único e independiente y solo se tiene un expect por cada caso.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+La estructura de los test cases es la siguiente:
 
-## Running end-to-end tests
+```js
+describe('when <caso de prueba>', () => {
+    it('should <descripción de caso de prueba>' () => {
+      // Arrange
+      ...
+      // Act
+      ...
+      // Assert
+      ...
+    });
+});
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Commits:
+El formato de los mensajes de los commits tienen la siguiente estructura:
+```bash
+git commit -m "<tipo de commit>: <descripción del commit>"
+```
+Se tomó como referencia la siguiente convención: https://www.conventionalcommits.org/en/v1.0.0/
